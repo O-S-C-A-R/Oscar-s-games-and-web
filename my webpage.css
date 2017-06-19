@@ -1,0 +1,382 @@
+body 
+{
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding:0;
+    margin:0;
+}
+
+#container
+{
+   width:100%;
+   margin:auto;
+   overflow:hidden;
+   
+}
+
+header 
+{
+  background: #35424a;
+  width:100%;
+  color:#ffffff;
+  padding-top:60px;
+  padding bottom:60px;
+  height: 60px;
+  border-bottom: #e8491d 3px solid;
+  position: fixed;
+  z-index: 60;
+}
+
+header a
+{
+  color:#ffffff;
+  text-decoration: none;
+  text-transform: uppercase; 
+  font-size: 16px;
+}
+
+header ul
+{
+  margin:0;
+  padding:0
+}
+
+header li
+{
+  float:left;
+  display:inline;
+  padding: 20px 30px 18px 30px;
+  font-family: helvetica;
+    margin-right: auto;
+    margin-left: auto;
+}
+ 
+header div nav ul #current div a:hover
+{
+   background:#e8491d;
+    transition: all 0.25s;
+    padding:20px 30px 100px 30px; 
+}
+
+#container ul li;
+{
+  list-style: none;
+  display:inline;
+  font-weight: bold;
+  
+}
+
+header #highlight, header #current a
+{
+    color:#e8491d;
+    font-weight:bold;
+}
+
+#container ul li div a:hover
+{
+    background:#e8491d;
+    transition: all 0.25s;
+    padding:20px 30px 100px 30px;
+}
+
+#current a:hover
+{
+    background:#e8491d;
+    transition: all 0.25s;
+    padding:20px 30px 100px 30px;
+}
+
+
+#showcase
+{
+    min-height:650px;
+    background:url(free_high_resolution_images_for_download-1.jpg) no-repeat 0 -400px ;
+    text-align: center;
+    color:#ffffff;
+    border-bottom: #35424a 100px solid;
+}
+
+#showcase h1
+{
+       margin-left: auto;
+       margin-right: auto;
+       font-size: 55px;
+       margin-top: 200px;
+       background-color: #35424a; 
+       width:60%;
+       opacity:0.6;
+       border-bottom: #e8491d 3px solid;
+}
+
+#showcase p
+{
+      width:55%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 20px;
+      background-color: #35424a; 
+      height:150px;
+      opacity:0.6;
+      padding:35px
+}
+
+#boxes
+{
+   margin-top: 20px; 
+   background-color:#35424a;
+   margin-right: auto; 
+   margin-left: auto; 
+   width:80%
+}
+
+#boxes #box
+{
+   margin-left: auto;
+   margin-right: auto; 
+   float:left;
+   width:30%;
+   padding:10px;
+   border-bottom: 3px #e8491d solid;
+}
+
+#boxes
+{
+    background-color:#ffffff
+}
+#boxes #box #img
+{
+   margin-left: auto;
+   margin-right: auto; 
+   width:90px;
+   padding: 0, 50px, 0, 50px; 
+   
+}
+
+#boxes h3
+{
+   padding-left: 80px
+}
+
+ footer
+{
+   margin-top:0px; 
+   color:#ffffff;
+   background-color:#e8491d;
+   text-align: center; 
+   height:75px;
+   border-top:100px #35424a solid;
+}
+
+#coding div
+{
+   min-height: 400px;
+   background: url(code-wallpaper-18.png) -600px 1000px;
+   border-bottom: #e8491d 8px solid;
+}
+
+#coding div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#coding div a h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 0px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.6;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+}
+
+#games div
+{
+   min-height: 400px;
+   background: url(video_games_background_020.jpg) 0 -500px;
+   border-bottom: #e8491d 8px solid;
+}
+
+#games div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#games div a h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 0px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.6;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+}
+
+#drawing div
+{
+   min-height: 400px;
+   background: url(hand_drawing-wallpaper-2560x1440.jpg) no-repeat -510px -400px;
+   border-bottom: #e8491d 8px solid;
+}
+
+#drawing div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#drawing div a h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 0px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.6;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+}
+
+#Music div
+{
+   min-height: 400px;
+   background: url(vvvv.jpg) no-repeat 0px -200px;
+   border-bottom: #e8491d 8px solid;
+}
+
+#Music div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#Music div a h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 0px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.6;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+}
+
+#tynker div
+{
+   padding-top: 100px;
+   min-height: 400px;
+   background: url(Tynker-iPad-App-Lost-in-Space.png) no-repeat 0px -700px;
+   border-bottom: #e8491d 8px solid;
+}
+
+#tynker div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#tynker div h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 163px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.8;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+   color:white;
+}
+
+#Hopscotch div
+{
+   padding-top: 100px;
+   min-height: 400px;
+   background: url(hopscotch.png) no-repeat -100px -0px;
+   border-bottom: #e8491d 8px solid;
+   border-top: #e8491d 8px solid; 
+}
+
+#Hopscotch div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#Hopscotch div h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 103px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.8;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+   color:white;
+}
+
+#arduino div
+{
+   padding-top: 100px;
+   min-height: 400px;
+   background: url(arduino_logo-wallpaper-1680x1050.jpg) no-repeat -100px -250px;
+   border-bottom: #e8491d 8px solid;
+   border-top: #e8491d 8px solid; 
+}
+
+#arduino div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#arduino div h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 103px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.8;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+   color:white;
+}
+
+#description 
+{
+   background-color: #35424a; 
+   
+}
+
+#description div p 
+{
+   color:white;
+   font-size: 20;
+   margin-left: 50px;
+   margin-right: 50px;
+   margin-top: auto;
+   margin-bottom: auto;
+   padding-top: 50px;
+   padding-bottom: 50px;
+}
