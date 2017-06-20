@@ -24,6 +24,8 @@ header
   border-bottom: #e8491d 3px solid;
   position: fixed;
   z-index: 60;
+  transition: height 0.3s linear 0s, padding 0.3s linear 0s;
+  overflow: hidden;
 }
 
 header a
@@ -379,4 +381,34 @@ header #highlight, header #current a
    margin-bottom: auto;
    padding-top: 50px;
    padding-bottom: 50px;
+}
+
+#Ipad div
+{
+   padding-top: 100px;
+   min-height: 400px;
+   background: url(125768783_HighRes-56a532a45f9b58b7d0db70ac.jpg) no-repeat -400px -520px;
+   border-bottom: #e8491d 8px solid;
+   border-top: #e8491d 8px solid; 
+}
+
+#Ipad div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#Ipad div h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 103px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.8;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+   color:white;
 }
