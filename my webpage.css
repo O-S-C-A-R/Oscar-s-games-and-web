@@ -5,7 +5,7 @@ body
     margin:0;
 }
 
-#container
+.container
 {
    width:100%;
    margin:auto;
@@ -13,22 +13,244 @@ body
    
 }
 
+.high .container > h1
+{
+   padding: 20px 20px 20px 20px;
+   opacity: 0.8;
+   background-color: #e8491d;
+   border-bottom: #35424a;
+   text-align: center;
+}
+
+.toggle_menu
+{
+  position:fixed;
+  padding:20px 20px 20px 20px;
+  margin-top:260px;
+  color:white;
+  cursor:pointer;
+  background-color: black;
+  z-index:100000;
+  font-size: 2em;
+  opacity:0;
+  
+}
+
+.go_back
+{
+  position:fixed;
+  padding:10px 10px 10px 10px;
+  background-color:#e8491d;
+  z-index:1000000;
+  opacity:0.8;
+  cursor:pointer;
+}
+
+.go_back:hover
+{
+  background-color:white;
+  opacity:1;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle_menu div
+{
+  width: 60px;
+  height: 8px;
+  background: #e8491d;
+  margin:7px 0px;
+}
+
+.toggle_menu div:hover
+{
+  background-color:white;
+  opacity:1;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar
+{
+  position:fixed;
+  width:250px;  
+  margin-left:0px;
+  overflow:hidden;
+  height:100vh;
+  max-height: 100vh;
+  background-color: rgba(17, 17, 17, 0.9);
+  opacity:0.9;
+  transition: all 0.3s ease-in-out;
+  z-index: 10000;
+}
+
+.green
+{
+  text-align: center;
+  color: #009975;
+  font-size: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  list-style: none;
+  padding-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: 'helvetica';
+  font-weight:200;
+   border-bottom: 1px #009975 solid; 
+}
+
+ .blue
+{
+  text-align: center;
+  color: #0375b4;
+  font-size: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  list-style: none;
+  padding-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: 'helvetica';
+  font-weight:200;
+  border-bottom: 1px #0375b4 solid; 
+}
+
+.orange
+{
+  text-align: center;
+  color: #e8491d;
+  font-size: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  list-style: none;
+  padding-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: 'helvetica';
+  font-weight:200;
+  border-bottom: 1px #e8491d solid; 
+  box-sizing: border-box;
+}
+
+.orange_borderbottom
+{
+  border-bottom: #e8491d 3px solid;
+}
+
+.orange_back
+{
+  background:#e8491d;   
+}
+
+.orange_backcol
+{
+  background-color: #e8491d; 
+}
+
+.blue_borderbottom
+{
+  border-bottom: #0375b4 3px solid;
+}
+
+.blue_back
+{
+  background:#0375b4;   
+}
+
+.blue_backcol
+{
+  background-color: #0375b4; 
+}
+
+.green_borderbottom
+{
+  border-bottom: #009975 3px solid;
+}
+
+.green_back
+{
+  background:#009975;   
+}
+
+.green_backcol
+{
+  background-color: #009975; 
+}
+
+.go_back
+{
+  right:10px;
+  top:10px;
+  opacity:0.7;
+  cursor:pointer;
+  position:absolute;
+  color:white;
+  transition: all 0.3s ease-in-out;
+  z-index: 10000200;
+}
+
+.go_back:hover;
+{
+  opacity:1;
+}
+
+.boxed_item
+{
+  font-family: 'Helvetica';
+  font-weight:200;
+  padding: 10px 20px;
+  display: inline-block;
+  border:solid 3px white;
+  box-sizing: border-box;
+  font-size:22px;
+  color: white;
+  text-align: center;
+  margin-top:70px;
+}
+
+.logo_bold
+{
+  font-weight:800;
+}
+
+.logo_title
+{
+  color:white;
+  font-family: 'helvetica';
+  font-weight: 200;
+  font-size:20px;
+  text-align: center;
+  padding: 0px 0;
+  
+}
+
+.hide_menu
+{
+  margin-left: -250px;
+}
+
+.opacity
+{
+  opacity:0.7; 
+  transition: all 0.5s ease-in-out;
+}
+
 header 
 {
   background: #35424a;
   width:100%;
   color:#ffffff;
-  padding-top:60px;
+  padding-top:50px;
   padding bottom:60px;
-  height: 60px;
+  transition: height 0.3s linear 0s, padding 0.3s linear 0s;
+  overflow:hidden;
   border-bottom: #e8491d 3px solid;
   position: fixed;
   z-index: 60;
-  transition: height 0.3s linear 0s, padding 0.3s linear 0s;
-  overflow: hidden;
 }
 
-header a
+
+
+.container a
 {
   color:#ffffff;
   text-decoration: none;
@@ -36,30 +258,28 @@ header a
   font-size: 16px;
 }
 
-header ul
+.container ul
 {
   margin:0;
   padding:0
 }
 
-header li
+.container li
 {
   float:left;
   display:inline;
-  padding: 20px 30px 18px 30px;
+  padding: 20px 30px 20px 20px;
   font-family: helvetica;
-    margin-right: auto;
-    margin-left: auto;
 }
  
-header div nav ul #current div a:hover
+.container div nav ul #current div a:hover
 {
-   background:#e8491d;
+   background:black;
     transition: all 0.25s;
-    padding:20px 30px 100px 30px; 
+    padding:20px 30px 50px 30px; 
 }
 
-#container ul li;
+.container ul li;
 {
   list-style: none;
   display:inline;
@@ -73,22 +293,22 @@ header #highlight, header #current a
     font-weight:bold;
 }
 
-#container ul li div a:hover
+.container ul li div a:hover
 {
     background:#e8491d;
-    transition: all 0.25s;
+    transition: all 0.25s ease-in-out;
     padding:20px 30px 100px 30px;
 }
 
-#current a:hover
+.current a:hover
 {
     background:#e8491d;
-    transition: all 0.25s;
+    transition: all 0.25s ease-in-out;
     padding:20px 30px 100px 30px;
 }
 
 
-#showcase
+.showcase
 {
     min-height:650px;
     background:url(free_high_resolution_images_for_download-1.jpg) no-repeat 0 -400px ;
@@ -97,7 +317,16 @@ header #highlight, header #current a
     border-bottom: #35424a 100px solid;
 }
 
-#showcase h1
+.high
+{
+    min-height:650px;
+    background:url(636163421948082537-1181026651_hs.jpg) no-repeat 0 -200px ;
+    text-align: center;
+    color:#ffffff;
+    border-bottom: #35424a 100px solid;
+}
+
+.showcase h1
 {
        margin-left: auto;
        margin-right: auto;
@@ -109,7 +338,7 @@ header #highlight, header #current a
        border-bottom: #e8491d 3px solid;
 }
 
-#showcase p
+.showcase p
 {
       width:55%;
       margin-left: auto;
@@ -121,7 +350,7 @@ header #highlight, header #current a
       padding:35px
 }
 
-#boxes
+.boxes
 {
    margin-top: 20px; 
    background-color:#35424a;
@@ -130,7 +359,7 @@ header #highlight, header #current a
    width:80%
 }
 
-#boxes #box
+.boxes .box
 {
    margin-left: auto;
    margin-right: auto; 
@@ -140,11 +369,11 @@ header #highlight, header #current a
    border-bottom: 3px #e8491d solid;
 }
 
-#boxes
+.boxes
 {
     background-color:#ffffff
 }
-#boxes #box #img
+.boxes .box .img
 {
    margin-left: auto;
    margin-right: auto; 
@@ -153,7 +382,7 @@ header #highlight, header #current a
    
 }
 
-#boxes h3
+.boxes h3
 {
    padding-left: 80px
 }
@@ -168,21 +397,21 @@ header #highlight, header #current a
    border-top:100px #35424a solid;
 }
 
-#coding div
+.coding div
 {
    min-height: 400px;
    background: url(code-wallpaper-18.png) -600px 1000px;
    border-bottom: #e8491d 8px solid;
 }
 
-#coding div a 
+.coding div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#coding div a h1
+.coding div a h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -195,21 +424,21 @@ header #highlight, header #current a
    text-align: center;
 }
 
-#games div
+.games div
 {
    min-height: 400px;
    background: url(video_games_background_020.jpg) 0 -500px;
    border-bottom: #e8491d 8px solid;
 }
 
-#games div a 
+.games div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#games div a h1
+.games div a h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -222,21 +451,21 @@ header #highlight, header #current a
    text-align: center;
 }
 
-#drawing div
+.drawing div
 {
    min-height: 400px;
    background: url(hand_drawing-wallpaper-2560x1440.jpg) no-repeat -510px -400px;
    border-bottom: #e8491d 8px solid;
 }
 
-#drawing div a 
+.drawing div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#drawing div a h1
+.drawing div a h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -249,21 +478,21 @@ header #highlight, header #current a
    text-align: center;
 }
 
-#Music div
+.Music div
 {
    min-height: 400px;
    background: url(vvvv.jpg) no-repeat 0px -200px;
    border-bottom: #e8491d 8px solid;
 }
 
-#Music div a 
+.Music div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#Music div a h1
+.Music div a h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -276,7 +505,7 @@ header #highlight, header #current a
    text-align: center;
 }
 
-#tynker div
+.tynker div
 {
    padding-top: 100px;
    min-height: 400px;
@@ -284,14 +513,14 @@ header #highlight, header #current a
    border-bottom: #e8491d 8px solid;
 }
 
-#tynker div a 
+.tynker div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#tynker div h1
+.tynker div h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -305,7 +534,7 @@ header #highlight, header #current a
    color:white;
 }
 
-#Hopscotch div
+.Hopscotch div
 {
    padding-top: 100px;
    min-height: 400px;
@@ -314,14 +543,14 @@ header #highlight, header #current a
    border-top: #e8491d 8px solid; 
 }
 
-#Hopscotch div a 
+.Hopscotch div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#Hopscotch div h1
+.Hopscotch div h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -335,7 +564,7 @@ header #highlight, header #current a
    color:white;
 }
 
-#arduino div
+.arduino div
 {
    padding-top: 100px;
    min-height: 400px;
@@ -344,14 +573,14 @@ header #highlight, header #current a
    border-top: #e8491d 8px solid; 
 }
 
-#arduino div a 
+.arduino div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#arduino div h1
+.arduino div h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -365,13 +594,63 @@ header #highlight, header #current a
    color:white;
 }
 
-#description 
+#mission-bit div
+{
+   padding-top: 100px;
+   min-height: 400px;
+   background: url(IMG_0046.jpg) no-repeat -100px -250px;
+   border-bottom: #e8491d 8px solid;
+   border-top: #e8491d 8px solid; 
+}
+
+
+
+#mission-bit div h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 103px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.8;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+   color:white;
+}
+
+#unity div
+{
+   padding-top: 100px;
+   min-height: 400px;
+   background: url($Unity%20Wallpaper.jpg) no-repeat -100px -250px;
+   border-bottom: #e8491d 8px solid;
+   border-top: #e8491d 8px solid; 
+}
+
+
+
+#unity div h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 103px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.8;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+   color:white;
+}
+
+.description 
 {
    background-color: #35424a; 
    
 }
 
-#description div p 
+.description div p 
 {
    color:white;
    font-size: 20;
@@ -383,23 +662,23 @@ header #highlight, header #current a
    padding-bottom: 50px;
 }
 
-#Ipad div
+#evolve div
 {
    padding-top: 100px;
    min-height: 400px;
-   background: url(125768783_HighRes-56a532a45f9b58b7d0db70ac.jpg) no-repeat -400px -520px;
+   background: url() no-repeat -100px -250px;
    border-bottom: #e8491d 8px solid;
    border-top: #e8491d 8px solid; 
 }
 
-#Ipad div a 
+#evolve div a 
 {
    text-decoration: none;
    color: white;
    background: #35424a;
 }
 
-#Ipad div h1
+#evolve div h1
 {
    margin-left: auto;
    margin-right: auto;
@@ -412,3 +691,4 @@ header #highlight, header #current a
    text-align: center;
    color:white;
 }
+
