@@ -13,13 +13,71 @@ body
    
 }
 
-.high .container > h1
+.years
 {
-   padding: 20px 20px 20px 20px;
-   opacity: 0.8;
-   background-color: #e8491d;
-   border-bottom: #35424a;
-   text-align: center;
+    min-height:650px;
+    background:url(years.jpg) no-repeat 0px -200px ;
+    text-align: center;
+    color:#ffffff;
+    border-bottom: #35424a 100px solid;    
+}
+
+.years h1
+{
+    margin-left: auto;
+       margin-right: auto;
+       font-size: 55px;
+       margin-top:300px;
+       background-color: #35424a; 
+       width:60%;
+       opacity:0.6;
+       border-bottom: #e8491d 3px solid;
+}
+
+.fav
+{
+    min-height:650px;
+    background:url(book.jpg) no-repeat 0px -200px ;
+    text-align: center;
+    color:#ffffff;
+    border-bottom: #35424a 100px solid;    
+}
+
+.fav h1
+{
+    margin-left: auto;
+       margin-right: auto;
+       font-size: 55px;
+       margin-top:300px;
+       background-color: #35424a; 
+       width:60%;
+       opacity:0.6;
+       border-bottom: #e8491d 3px solid;
+}
+
+
+.high h1
+{
+    margin-left: auto;
+       margin-right: auto;
+       font-size: 55px;
+       margin-top:300px;
+       background-color: #35424a; 
+       width:60%;
+       opacity:0.6;
+       border-bottom: #e8491d 3px solid;
+}
+
+.games h1
+{
+    margin-left: auto;
+       margin-right: auto;
+       font-size: 55px;
+       margin-top:300px;
+       background-color: #35424a; 
+       width:60%;
+       opacity:0.6;
+       border-bottom: #e8491d 3px solid;
 }
 
 .toggle_menu
@@ -32,7 +90,7 @@ body
   background-color: black;
   z-index:100000;
   font-size: 2em;
-  opacity:0;
+  opacity:1;
   
 }
 
@@ -72,7 +130,7 @@ body
 {
   position:fixed;
   width:250px;  
-  margin-left:0px;
+  margin-left:-250px;
   overflow:hidden;
   height:100vh;
   max-height: 100vh;
@@ -225,12 +283,12 @@ body
 
 .hide_menu
 {
-  margin-left: -250px;
+  margin-left: 0px;
 }
 
 .opacity
 {
-  opacity:0.7; 
+  opacity:0; 
   transition: all 0.5s ease-in-out;
 }
 
@@ -268,7 +326,7 @@ header
 {
   float:left;
   display:inline;
-  padding: 20px 30px 20px 20px;
+  padding: 20px 50px 20px 50px;
   font-family: helvetica;
 }
  
@@ -320,7 +378,34 @@ header #highlight, header #current a
 .high
 {
     min-height:650px;
-    background:url(636163421948082537-1181026651_hs.jpg) no-repeat 0 -200px ;
+    background:url(636163421948082537-1181026651_hs.jpg) no-repeat 50px 0px ;
+    text-align: center;
+    color:#ffffff;
+    border-bottom: #35424a 100px solid;
+}
+
+.drawing
+{
+    min-height:650px;
+    background:url(hand_drawing-wallpaper-2560x1440.jpg) no-repeat 0 -200px ;
+    text-align: center;
+    color:#ffffff;
+    border-bottom: #35424a 100px solid;
+}
+
+.misuc
+{
+    min-height:650px;
+    background:url(vvvv.jpg) no-repeat 0 0px ;
+    text-align: center;
+    color:#ffffff;
+    border-bottom: #35424a 100px solid;
+}
+
+.games
+{
+    min-height:850px;
+    background:url(heyeheyeheye.png) no-repeat 0px -200px ;
     text-align: center;
     color:#ffffff;
     border-bottom: #35424a 100px solid;
@@ -337,6 +422,31 @@ header #highlight, header #current a
        opacity:0.6;
        border-bottom: #e8491d 3px solid;
 }
+
+.drawing h1
+{
+       margin-left: auto;
+       margin-right: auto;
+       font-size: 55px;
+       margin-top: 300px;
+       background-color: #35424a; 
+       width:60%;
+       opacity:0.6;
+       border-bottom: #e8491d 3px solid;
+}
+
+.misuc h1
+{
+       margin-left: auto;
+       margin-right: auto;
+       font-size: 55px;
+       margin-top: 300px;
+       background-color: #35424a; 
+       width:60%;
+       opacity:0.6;
+       border-bottom: #e8491d 3px solid;
+}
+
 
 .showcase p
 {
@@ -424,12 +534,35 @@ header #highlight, header #current a
    text-align: center;
 }
 
-.games div
+.draw div
 {
    min-height: 400px;
-   background: url(video_games_background_020.jpg) 0 -500px;
+   background: url(hand_drawing-wallpaper-2560x1440.jpg) -200px -400px;
    border-bottom: #e8491d 8px solid;
 }
+
+.draw div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+.draw div a h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 0px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.6;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+}
+
+
+
 
 .games div a 
 {
@@ -451,32 +584,6 @@ header #highlight, header #current a
    text-align: center;
 }
 
-.drawing div
-{
-   min-height: 400px;
-   background: url(hand_drawing-wallpaper-2560x1440.jpg) no-repeat -510px -400px;
-   border-bottom: #e8491d 8px solid;
-}
-
-.drawing div a 
-{
-   text-decoration: none;
-   color: white;
-   background: #35424a;
-}
-
-.drawing div a h1
-{
-   margin-left: auto;
-   margin-right: auto;
-   font-size: 55px;
-   margin-top: 0px;
-   background-color: #35424a; 
-   width:60%;
-   opacity:0.6;
-   border-bottom: #e8491d 3px solid;
-   text-align: center;
-}
 
 .Music div
 {
@@ -666,7 +773,7 @@ header #highlight, header #current a
 {
    padding-top: 100px;
    min-height: 400px;
-   background: url() no-repeat -100px -250px;
+   background: url(tech.jpg) no-repeat -500px -450px;
    border-bottom: #e8491d 8px solid;
    border-top: #e8491d 8px solid; 
 }
@@ -679,6 +786,36 @@ header #highlight, header #current a
 }
 
 #evolve div h1
+{
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 55px;
+   margin-top: 103px;
+   background-color: #35424a; 
+   width:60%;
+   opacity:0.8;
+   border-bottom: #e8491d 3px solid;
+   text-align: center;
+   color:white;
+}
+
+#venture div
+{
+   padding-top: 100px;
+   min-height: 400px;
+   background: url(space%20ship%20copy.png) no-repeat -600px -400px;
+   border-bottom: #e8491d 8px solid;
+   border-top: #e8491d 8px solid; 
+}
+
+#venture div a 
+{
+   text-decoration: none;
+   color: white;
+   background: #35424a;
+}
+
+#venture div h1
 {
    margin-left: auto;
    margin-right: auto;

@@ -1,14 +1,15 @@
 $(document).ready(function() 
 {
-  $(".go_back").click(function(){
+  $(".toggle_menu").click(function(){
       $(".sidebar").addClass("hide_menu");
       $(".toggle_menu").addClass("opacity");
   });
- $(".toggle_menu").click(function(){
+
+  $(".go_back").click(function(){
       $(".sidebar").removeClass("hide_menu");
       $(".toggle_menu").removeClass("opacity");
   });
-
+ 
                   
 $(".orange").click(function()
 {
