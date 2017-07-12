@@ -16,14 +16,15 @@ var mainState =
           this.game.stage.backgroundColor = '#7ec0ee'; 
           this.game.physics.startSystem(Phaser.Physics.ARCADE);
           this.game.world.enableBody = true;
-          this.player = this.game.add.sprite(1300,6500, 'player1');
-          //this.moves = this.game.add.group();
-            this.fireball
+          this.player = this.game.add.sprite(1360,6660, 'player1');
+           
           this.player.body.gravity.y = 600;
+
           this.walls = this.game.add.group();
           this.walls1 = this.game.add.group();
           this.coins = this.game.add.group();
           this.lavas = this.game.add.group();
+          this.collides = this.game.add.group();    
           this.back = this.game.add.group();
             this.game.camera.follow(this.player);
             this.player.body.collideWorldBounds = true;
@@ -285,88 +286,88 @@ var mainState =
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',   
-'xy                                                              ',
-'x                                                               ',
-'x                                                               ',
-'x                                                               ',
-'x                                                               ',
-'x                                                               ',             
-'x                                                               ',              
-'x                                                               ',              
-'x                                                               ',             
-'x                                                               ',              
-'x                                                               ',          
-'x                                                               ',          
-'x                                                               ',          
-'x                                                               ',          
-'x                                                               ',          
-'x                                                               ',          
-'x                                                               ',          
-'x                                                               ',
-'x                                                               ',              
-'x                                                               ',              
-'x                                                               ',              
-'x                                                               ',              
-'x                                                               ',              
-'x                                                               ',
-'x                                                               ',              
-'x                                                               ',
-'x                                                               ',             
-'x                                                               ',
-'x                                                               ',              
-'x                                                               ',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',           
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',           
-'xm                                                                 ',
-'x                                                                  ',
-'x                                                                  ',
-'x                                                                  ',
-'x                                                                  ',
-'x                                                                  ',             
-'x                                                                  ',              
-'x                                                                  ',              
-'x                                                                  ',             
-'x                                                                  ',              
-'x                                                                  ',          
-'x                                                                  ',          
-'x                                                                  ',          
-'x                                                                  ',          
-'x                                                                  ',          
-'x                                                                  ',          
-'x                                                                  ',          
-'x                                                                  ',
-'x                                                                  ',              
-'x                                                                  ',              
-'x                                                                  ',              
-'x  %        $                  #                   f               ',              
-'x                                                                  ',              
-'x                                                                  ',
+'xy                                                                  ',
+'x                                                                   ',
+'x                                                                   ',
+'x                                                                   ',
+'x                                                                   ',
+'x                                                                   ',             
+'x                                                                   ',              
+'x                                                                   ',              
+'x                                                                   ',             
+'x                                                                   ',              
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',
+'x                                                                   ',              
+'x                                                                   ',              
+'x                                                                   ',              
+'x                                                                   ',              
+'x                                                                   ',              
+'x                                                                   ',
+'x                                                                   ',              
+'x                                                                   ',
+'x                                                                   ',             
+'x                                                                   ',
+'x                                                                   ',              
+'x                                                                   ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',           
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',           
+'xm                                                                  ',
+'x                                                                   ',
+'x                                                                   ',
+'x                                                                   ',
+'x                                                                   ',
+'x                                                                   ',             
+'x                                                                   ',              
+'x                                                                   ',              
+'x                                                                   ',             
+'x                                                                   ',              
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',          
+'x                                                                   ',
+'x                                                                   ',              
+'x  %        $                  #                   f                ',              
+'x                                                                   ',              
+'x                                                                   ',              
+'x                                                                   ',              
+'x                xxxxxxxxx           xxxxxxxxx           xxxxxxxxxxx',
 'x    xx          xxxxxxxxx           xxxxxxxxx           xxxxxxxxxxx',              
-'x xd xx          xxxxxxxxx          dxxxxxxxxx           xxxxxxxxxxx',
+'x xv xx          xxxxxxxxx          vxxxxxxxxx           xxxxxxxxxxx',
 'x x  xx          xxxxxxxxx           xxxxxxxxx           xxxxxxxxxxx',             
 'x x                                                      xxxxxxxxxxx',
 'x x                                                      xxxxxxxxxxx',              
@@ -456,20 +457,32 @@ this.lavas.add(enemy);
 }
 else if (level[i][j] == 'f') {
 this.fireball = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
+this.fireball.body.gravity.y = 600;
+//this.game.debug.spriteBounds(this.fireball);   
 }    
 else if (level[i][j] == '#') {
 this.fireball1 = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
+this.fireball1.body.gravity.y= 600;
 }    
 else if (level[i][j] == '$') {
 this.fireball2 = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
+this.fireball2.body.gravity.y= 600;
 } 
 else if (level[i][j] == '%') {
 this.fireball3 = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
+this.fireball3.body.gravity.y= 600;
 }    
 else if (level[i][j] == 'd') {
 var lavae = this.game.add.sprite(30+20*j, 30+20*i, 'lavae');
 this.lavas.add(lavae);
 lavae.body.immovable = true;
+//this.game.debug.spriteBounds(lavae);    
+}
+else if (level[i][j] == 'v') {
+var one = this.game.add.sprite(30+20*j, 30+20*i, 'lavae');
+this.collides.add(one);
+one.body.immovable = true;
+//this.game.debug.spriteBounds(lavae);    
 }
 
 else if (level[i][j] == 's') {
@@ -512,33 +525,35 @@ this.walls.add(grass);
 grass.body.immovable = true; 
 }
 
-}
+}               
 
 }
-            this.fireball.body.gravity.y = 600;
-            this.fireball1.body.gravity.y = 600;
-            this.fireball2.body.gravity.y = 600;
-            this.fireball3.body.gravity.y = 600;
+            
+         
+           
         },
       update: function()
         {
            
-           this.game.physics.arcade.collide(this.fireball,this.lavas, this.hit(this.fireball), null, this);
-           this.game.physics.arcade.collide(this.fireball1,this.lavas, this.hit(this.fireball1), null, this);   
-           this.game.physics.arcade.collide(this.fireball2,this.lavas, this.hit(this.fireball2), null, this);   
-           this.game.physics.arcade.collide(this.fireball3,this.lavas, this.hit(this.fireball3), null, this);   
+           this.game.physics.arcade.collide(this.fireball,this.collides, this.hit, null, this);
+           this.game.physics.arcade.collide(this.fireball1,this.collides, this.hit, null, this);   
+           this.game.physics.arcade.collide(this.fireball2,this.collides, this.hit, null, this);   
+           this.game.physics.arcade.collide(this.fireball3,this.collides, this.hit, null, this);   
 
            this.physics.arcade.collide(this.walls, this.player);
            this.physics.arcade.collide(this.walls1, this.player);
            this.physics.arcade.collide(this.coins, this.player, this.takeCoin, null, this);
            this.physics.arcade.overlap(this.lavas, this.player, this.restart, null, this);
-           
+           this.physics.arcade.overlap(this.fireball, this.player, this.restart, null, this);
+           this.physics.arcade.overlap(this.fireball1, this.player, this.restart, null, this);
+           this.physics.arcade.overlap(this.fireball2, this.player, this.restart, null, this);
+           this.physics.arcade.overlap(this.fireball3, this.player, this.restart, null, this);
            //this.physics.arcade.overlap(this.player, this.back);
            this.physics.arcade.overlap(this.moves, this.player, this.restart, null, this); 
            this.game.world.bringToTop(this.walls);
            this.game.world.bringToTop(this.lavas);
            this.game.world.bringToTop(this.player);
-           
+           this.game.world.bringToTop(this.collides);        
            if(this.cursor.left.isDown)
               {
                 this.player.body.velocity.x = -200;
@@ -610,10 +625,10 @@ grass.body.immovable = true;
              }
         },
         
-      hit: function(ball)
+      hit: function()
         {
             
-          ball.body.velocity.y =-600;   
+            this.fireball.body.acceleration.y =-600;
         }
 
     };
