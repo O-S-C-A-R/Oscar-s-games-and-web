@@ -10,53 +10,30 @@ var mainState =
 //        },
       create: function()
         {
-            this.game.world.setBounds(0,0,1400,9000);
+          this.game.world.setBounds(0,0,1400,9000);
           this.cursor =
           this.game.input.keyboard.createCursorKeys();
           this.game.stage.backgroundColor = '#7ec0ee'; 
           this.game.physics.startSystem(Phaser.Physics.ARCADE);
           this.game.world.enableBody = true;
-          this.player = this.game.add.sprite(1360,6660, 'player1');
-           
+          this.player = this.game.add.sprite(80,720, 'player1');
+          
           this.player.body.gravity.y = 600;
-
+          this.drops = this.game.add.group();
           this.walls = this.game.add.group();
           this.walls1 = this.game.add.group();
           this.coins = this.game.add.group();
           this.lavas = this.game.add.group();
           this.collides = this.game.add.group();    
           this.back = this.game.add.group();
-            this.game.camera.follow(this.player);
-            this.player.body.collideWorldBounds = true;
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
             
+          this.isHintOn = false;
           var level = [
               
               
               
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
@@ -79,15 +56,15 @@ var mainState =
 'xx                       x              x                   x     xxx',             
 'x                                       x                         xxx',             
 'x!                                                                xxx',                                                                    
-'x!        o                                                       xxx',
+'x!                                                                xxx',
 'x!     xxxxx                                                      xxx',
-'x!        !x!!!!x    o                                             ',
+'x!        !x!!!!x                                                  ',
 'xxxxx     !xxxxxx!!!!x                                             ',
-'x!        !xxxxxxxxxxx!!!!x    o                                  o',
+'x!        !xxxxxxxxxxx!!!!x                                        ',
 'x!     xxxxxxxxxxxxxxxxxxxx!!!!x                                  x',
-'x!        !xxxxxxxxxxxxxxxxxxxxxx       o       o       o         x',
-'xxxxx     !xxxxxxxxxxxxxxxxxxxxxx       x       x       x       x x',
-'x!        !xxxxxxxxxxxxxxxxxxxxxxd                                x',
+'x!        !xxxxxxxxxxxxxxxxxxxxxx                                 x',
+'xxxxx     !xxxxxxxxxxxxxxxxxxxxxx       x       x       x         x',
+'x!        !xxxxxxxxxxxxxxxxxxxxxxv                                x',
 'x!     xxxxxxxxxxxxxxxxxxxxxxxxxx                                xx',
 'x!        !xxxxxxxxxxxxxxxxxxxxxx                                xx',
 'xxxxx     !xxxxxxxxxxxxxxxxxxxxxx                                xx',
@@ -107,21 +84,7 @@ var mainState =
 'xxxxxxrxxxxxxrxxxxxxxxrxxxrxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxrxxxxx   ',
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxrxxxxxxxxxxxxxxxxrxxxxxxxxxx   ',              
 'xxxxxxxxxrxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxrxxxxxxxxxxxxxxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxx   ',
-'xxxxxxrxxxxxxrxxxxxxxxrxxxrxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxrxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxrxxxxxxxxxxxxxxxxrxxxxxxxxxx   ',              
-'xxxxxxxxxrxxxxxxxxxxxxrxxxxxxxxxxxrxxxxxxxxxxrxxxxxxxxxxxxxxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxx   ',
-'xxxxxxxxxrxxxxxxxxxrxxxxxxxxxxxxxxrxxxxxxxxxxrxxxxxxxxxxxxxxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxx   ',
-'xxxxxxrxxxxxxrxxxxxxxxrxxxrxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxrxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxrxxxxxxxxxxxxxxxxrxxxxxxxxxx   ',              
-'xxxxxxxxxrxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxrxxxxxxxxxxxxxxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxx   ',
-'xxxxxxrxxxxxxrxxxxxxxxrxxxrxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxrxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxrxxxxxxxxxxxxxxxxrxxxxxxxxxx   ',              
-'xxxxxxxxxrxxxxxxxxxxxxrxxxxxxxxxxxrxxxxxxxxxxrxxxxxxxxxxxxxxxxxx   ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxx   ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxx   ',         //1000
 'x                                                                  ',
 'x                              u                                   ',
 'x                                                                  ',
@@ -133,11 +96,11 @@ var mainState =
 'x                                                                  ',                                                                    
 'x                                                                  ',
 'x                                 gg--                             ',
-'x                ---             og-ggg          g                 ',
+'x                ---              g-ggg          g                 ',
 'x             ogggggg           g-------gg      gggg               ',
 'x             --------          -----------   ggggggg              ',
 'x                                                                  ',
-'x                                       ggo                        ',
+'x                                       gg                         ',
 'x       gg               ggg           gg--gg                      ',
 'x    gggggg            gggggg         gg------                     ',
 'x  gggggggggg        gggggggg        ----------                    ',
@@ -149,13 +112,6 @@ var mainState =
 'x e                                                                ',
 'e e                                                                ',
 'e e                                                                ',
-'e eerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',          
-'e eeerrrrrrerrrrrrrreerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'e eeeerrrerrrrrrexrrrrrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',                
-'e eeeeerrrrrerrrrrerrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'e eeeeeerrerrrrrrerrrrrrrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'e eeeeeeerrrrrrrrrrrrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'e eeeeeeeerrrrrerrrrrrrrrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
 'e eeeeeeeeerrerrrrrrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
 'e eeeeeeeeeerrrrrerrrrrrrrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
 'e eeeeeeeeeeerrrerrrrrrerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
@@ -169,18 +125,21 @@ var mainState =
 'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrerrrrrerrrrerrrrrrrrrrrrerrrrrrrrrr',
 'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrerrrrrrrrrrerrrrrrrrrrrrrrrr',
 'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrerrrrrrrrrrrrerrrrrr',
-'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrr',
+'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrr',        //1800
 'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
 'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
 'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
 'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-'e         e     e   e    e    e    e     e    e    e     e   e     ee',
-'e    u    e     e        e    e    e     e    e    e         e     ee',
-'e               e        e    e    e          e    e         e     ee',
-'e               e                  e          e              e     ee',            
-'e                                  e                         e     ee',          
-'e                                                 n          e     ee',            
-'e                                                                  ee',             
+'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',   //1940
+'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+'e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+'e      eu  e    e    e   e    e    e    e     e    e    e    e     ee',
+'e      e   e    e    e             e    e     e         e    e     ee',            
+'e      e   e         e             e    e               e    e     ee',          
+'e      e             e                  e         n          e     ee',            
+'e      e                                                           ee',             
 'e                                        t                         ee',             
 'e                                                                  ee',                                                                    
 'e                                                                  ee',
@@ -207,19 +166,9 @@ var mainState =
 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrrrr',
 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrrrrr',              
 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrrrrrr',
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',             
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',              
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',             
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',              
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',              
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',             
+'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 
 'xrrrrrrrxxrrrrrxxrrrrrrrrrxxrrrxxrrrrrrrxxrrrrrrrrrrrrxxrrrrrxxx',
-'xrrrrrrrxxrrrrrxxrrrrrrrrrxxrrrxxrrrrrrrxxrrrrrrrrrrrrxxrrrrrxx',              
+'xrrrrrrrxxrrrrrxxrrrrrrrrrxxrrrxxrrrrrrrxxrrrrrrrrrrrrxxrrrrrxxx',              
 'xxrrrrrxxxxrrrxxxxrrrrrrrxxxxrxxxxrrrrrxxxxrrrrrrrrrrxxxxrrrxxxx',
 'xxrrrrrxxxxrrrxxxxrrrrrrrxxxxrxxxxrrrrrxxxxxrrrrrrrrrxxxxrrrxxxx',             
 'xxxrrrxxxxxxrxxxxxxrrrrrxxxxxxxxxxxrrrxxxxxxxrrrrrrrxxxxxxrxxxxx',
@@ -228,13 +177,7 @@ var mainState =
 'xxxxrxxxxxxxxxxxxxxxrrrxxxxxxxxxxxxxrxxxxxxxxxxrrrxxxxxxxxxxxxxx',
 'xxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxxxxxxxxxxxxxxrrrxxxxxxxxxxxxxx',             
 'xxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxxxxxxxxxxxxxxxrxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',          //2840    
 'xc                                                              ',
 'x                                                               ',
 'x                                                               ',
@@ -268,24 +211,10 @@ var mainState =
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',   
+'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',   //3540
 'xy                                                                  ',
 'x                                                                   ',
 'x                                                                   ',
@@ -324,24 +253,11 @@ var mainState =
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',           
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',             
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',           
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ',    //4400       
 'xm                                                                  ',
 'x                                                                   ',
 'x                                                                   ',
@@ -361,17 +277,17 @@ var mainState =
 'x                                                                   ',          
 'x                                                                   ',
 'x                                                                   ',              
-'x  %        $                  #                   f                ',              
+'x  %       $                   #                   f                ',              
 'x                                                                   ',              
 'x                                                                   ',              
 'x                                                                   ',              
-'x                xxxxxxxxx           xxxxxxxxx           xxxxxxxxxxx',
-'x    xx          xxxxxxxxx           xxxxxxxxx           xxxxxxxxxxx',              
-'x xv xx          xxxxxxxxx          vxxxxxxxxx           xxxxxxxxxxx',
-'x x  xx          xxxxxxxxx           xxxxxxxxx           xxxxxxxxxxx',             
-'x x                                                      xxxxxxxxxxx',
-'x x                                                      xxxxxxxxxxx',              
-'x x                                                      xxxxxxxxxxx',                            
+'x                xxxxxxxxxx          xxxxxxxxxx          xxxxxxxxxxx',
+'x    xx          xxxxxxxxxx          xxxxxxxxxx          xxxxxxxxxxx',              
+'x xv xx          xxxxxxxxxx         vxxxxxxxxxx          xxxxxxxxxxx',
+'x x  xx                                                             ',             
+'x x                                                                 ',
+'x x                                                                 ',              
+'x x                                                                 ',          //5000                  
 'x lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll',
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
@@ -380,28 +296,88 @@ var mainState =
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
 'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             
-          
-          
+'x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             //5260
+'xd                                                                   ',
+'x                                                                    ',
+'x                                                                    ',
+'x                                                                    ',
+'x                                                                    ',
+'x                                                                    ',             
+'x                                                                    ',              
+'x                                                                    ',              
+'x                                                                    ',             
+'x                                                                    ',              
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',
+'x                                                                    ',              
+'x b      b                                              b      b     ',              
+'x                                                                    ',              
+'x                                                                    ', //5700             
+'x                                                                    ',              
+'x                                                                    ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',             
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',       //5900       
+'x                                                                    ',
+'x                                                                    ',
+'x                                                                    ',
+'x                                                                    ',
+'x                                                                    ',
+'x                                                                    ',             
+'x                                                                    ',              
+'x                                                                    ',              
+'x                                                                    ',             
+'x                                                                    ',              
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                                                    ',          
+'x                                      g                             ',
+'x                                      g-g                           ',              
+'x      ggg                             ggg                           ',              
+'x    ggggggg                          gggg                           ',              
+'x    --------                        ------                          ',              
+'x                                                     ggg            ',  
+'x                    kkkkkkkk                       ggggggg          ',    //140 for drop
+'x                    hggggggh                      ---------         ',
+'x                                                                    ',
+'x                                    h                               ',
+'x                                                                    ',
+'x                                                                    ',             
+'x                                                                    ',  
+'xxxgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             //6400
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+'xxxxxxxxx          xxxxxxxxxx    xxxxxxxx  xxxxxxxxxx     xxxxxxxxxxxx',              
+'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xx  xxxxxx  xxxxxxxxxx  xxx  xxxxxxxxx',
+'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xx  xxxxxx  xxxxxxxxxx  xxxxx xxxxxxxx',             
+'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxx  xxxx  xxxxxxxxxx  xxxxxx xxxxxxx',
+'xxxxxxxxx          xxxxxxxxxx  xxxx  xxxx  xxxxxxxxxx  xxxxxx xxxxxxx',              
+'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxxxx  xx  xxxxxxxxxx  xxxxxx xxxxxxx',              
+'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxxxx  xx  xxxxxxxxxx  xxxxx xxxxxxxx',
+'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxxxxxx    xxxxxxxxxx  xxx  xxxxxxxxx',
+'xxxxxxxxx          xxxxxxxxxx  xxxxxxxx    xxxxxxxxxx     xxxxxxxxxxx',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
+'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',          //6620
           
           ];
             for (var i = 0; i < level.length; i++) {
@@ -417,7 +393,10 @@ else if (level[i][j] == 't') {
 var tree = this.game.add.sprite(30+20*j, 30+20*i, 'tree');
 this.back.add(tree);
 }
-
+else if (level[i][j] == 'd') {
+var ancient = this.game.add.sprite(30+20*j, 30+20*i, 'ancient');
+this.back.add(ancient);
+}
 else if (level[i][j] == 'c') {
 var cave = this.game.add.sprite(30+20*j, 30+20*i, 'cave');
 this.back.add(cave);
@@ -433,6 +412,10 @@ this.back.add(tomb);
 else if (level[i][j] == 'n') {
 var treeb = this.game.add.sprite(30+20*j, 30+20*i, 'treeb');
 this.back.add(treeb);
+}
+else if (level[i][j] == 'b') {
+var ctree = this.game.add.sprite(30+20*j, 30+20*i, 'ctree');
+this.back.add(ctree);
 }
 else if (level[i][j] == 'x') {
 var wall = this.game.add.sprite(30+20*j, 30+20*i, 'wall');
@@ -457,27 +440,23 @@ this.lavas.add(enemy);
 }
 else if (level[i][j] == 'f') {
 this.fireball = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
-this.fireball.body.gravity.y = 600;
+this.fireball.body.gravity.y = 2500;
 //this.game.debug.spriteBounds(this.fireball);   
 }    
 else if (level[i][j] == '#') {
 this.fireball1 = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
-this.fireball1.body.gravity.y= 600;
+this.fireball1.body.gravity.y= 2500;
 }    
 else if (level[i][j] == '$') {
 this.fireball2 = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
-this.fireball2.body.gravity.y= 600;
+this.fireball2.body.gravity.y= 2500;
 } 
 else if (level[i][j] == '%') {
 this.fireball3 = this.game.add.sprite(30+20*j, 30+20*i, 'fireball');
-this.fireball3.body.gravity.y= 600;
+this.fireball3.body.gravity.y= 2500;
 }    
-else if (level[i][j] == 'd') {
-var lavae = this.game.add.sprite(30+20*j, 30+20*i, 'lavae');
-this.lavas.add(lavae);
-lavae.body.immovable = true;
-//this.game.debug.spriteBounds(lavae);    
-}
+ 
+
 else if (level[i][j] == 'v') {
 var one = this.game.add.sprite(30+20*j, 30+20*i, 'lavae');
 this.collides.add(one);
@@ -504,6 +483,16 @@ var white = this.game.add.sprite(30+20*j, 30+20*i, 'white');
 this.walls.add(white);
 white.body.immovable = true; 
 }
+else if (level[i][j] == 'h') {
+this.touch = this.game.add.sprite(30+20*j, 30+20*i, 'touch');
+this.walls.add(this.touch);
+this.touch.body.immovable = true; 
+}
+else if (level[i][j] == 'k') {
+var drop = this.game.add.sprite(30+20*j, 30+20*i, 'drop');
+this.drops.add(drop);
+
+}
 else if (level[i][j] == 'g') {
 var grey = this.game.add.sprite(30+20*j, 30+20*i, 'grey');
 this.lavas.add(grey);
@@ -528,18 +517,35 @@ grass.body.immovable = true;
 }               
 
 }
-            
-         
-           
+        this.yourself = this.nohelp;
+        this.hint = this.game.add.button(20, 20, 'hint', this.nohelp, this); 
+        this.hint.fixedToCamera = true;     
+        this.onee = this.game.add.button(100, 20, 'onee', this.one, this); 
+        this.onee.fixedToCamera = true;   
+        this.twoo = this.game.add.button(200, 20, 'twoo', this.two, this); 
+        this.twoo.fixedToCamera = true;   
+        this.threee = this.game.add.button(300, 20, 'threee', this.three, this); 
+        this.threee.fixedToCamera = true;   
+        this.fourr = this.game.add.button(400, 20, 'fourr', this.four, this); 
+        this.fourr.fixedToCamera = true;   
+        this.fivee = this.game.add.button(500, 20, 'fivee', this.five, this); 
+        this.fivee.fixedToCamera = true;
+        this.sixx = this.game.add.button(600, 20, 'sixx', this.six, this); 
+        this.sixx.fixedToCamera = true;   
+        this.sevenn = this.game.add.button(700, 20, 'sevenn', this.seven, this); 
+        this.sevenn.fixedToCamera = true; 
+        this.eightt = this.game.add.button(800, 20, 'eightt', this.eight, this); 
+        this.eightt.fixedToCamera = true;   
         },
       update: function()
         {
            
-           this.game.physics.arcade.collide(this.fireball,this.collides, this.hit, null, this);
-           this.game.physics.arcade.collide(this.fireball1,this.collides, this.hit, null, this);   
-           this.game.physics.arcade.collide(this.fireball2,this.collides, this.hit, null, this);   
-           this.game.physics.arcade.collide(this.fireball3,this.collides, this.hit, null, this);   
-
+           this.game.physics.arcade.collide(this.fireball, this.collides, this.hit, null, this);
+           this.game.physics.arcade.collide(this.fireball1, this.collides, this.hit, null, this);   
+           this.game.physics.arcade.collide(this.fireball2, this.collides, this.hit, null, this);   
+           this.game.physics.arcade.collide(this.fireball3, this.collides, this.hit, null, this);   
+           this.game.physics.arcade.collide(this.touch, this.player, this.touchdrop, null, this); 
+           this.game.physics.arcade.collide(this.drops, this.player, this.restart, null, this);   
            this.physics.arcade.collide(this.walls, this.player);
            this.physics.arcade.collide(this.walls1, this.player);
            this.physics.arcade.collide(this.coins, this.player, this.takeCoin, null, this);
@@ -548,12 +554,23 @@ grass.body.immovable = true;
            this.physics.arcade.overlap(this.fireball1, this.player, this.restart, null, this);
            this.physics.arcade.overlap(this.fireball2, this.player, this.restart, null, this);
            this.physics.arcade.overlap(this.fireball3, this.player, this.restart, null, this);
-           //this.physics.arcade.overlap(this.player, this.back);
+           this.physics.arcade.overlap(this.collides, this.player, this.restart, null, this);
            this.physics.arcade.overlap(this.moves, this.player, this.restart, null, this); 
            this.game.world.bringToTop(this.walls);
            this.game.world.bringToTop(this.lavas);
            this.game.world.bringToTop(this.player);
-           this.game.world.bringToTop(this.collides);        
+           this.game.world.bringToTop(this.collides); 
+           this.game.world.bringToTop(this.hint); 
+           this.game.world.bringToTop(this.onee); 
+           this.game.world.bringToTop(this.twoo); 
+           this.game.world.bringToTop(this.threee); 
+           this.game.world.bringToTop(this.fourr); 
+           this.game.world.bringToTop(this.fivee);
+           this.game.world.bringToTop(this.sixx); 
+           this.game.world.bringToTop(this.sevenn); 
+           this.game.world.bringToTop(this.eightt);
+           this.game.world.bringToTop(this.yourself);
+
            if(this.cursor.left.isDown)
               {
                 this.player.body.velocity.x = -200;
@@ -583,37 +600,46 @@ grass.body.immovable = true;
         },
       restart: function()
         {
-          if(this.player.body.y>900 && this.player.body.y<1860)
+          if(this.player.body.y>200 && this.player.body.y<1000)
              {
                this.player.kill();
-               this.player = this.game.add.sprite(80,1200,'player1');
+               this.player = this.game.add.sprite(80,720,'player1');
                this.player.body.gravity.y = 600;
                this.game.world.setBounds(0,0,1400,9000);
                this.game.camera.follow(this.player);
                this.player.body.collideWorldBounds = true;
              }
-          else if(this.player.body.y>1861 && this.player.body.y<2900)
+          else if(this.player.body.y>1001 && this.player.body.y<1940)
              {
                this.player.kill();
-               this.player = this.game.add.sprite(1360,2160,'player1');
+               this.player = this.game.add.sprite(1360,1400,'player1');
                this.player.body.gravity.y = 600;
                this.game.world.setBounds(0,0,1400,9000);
                this.game.camera.follow(this.player);
                this.player.body.collideWorldBounds = true;
              }
-          else if(this.player.body.y>2901 && this.player.body.y<4140)
+          else if(this.player.body.y>1941 && this.player.body.y<3540)
              {
                this.player.kill();
-               this.player = this.game.add.sprite(80,3300,'player1');
+               this.player = this.game.add.sprite(80,2400,'player1');
                this.player.body.gravity.y = 600;
                this.game.world.setBounds(0,0,1400,9000);
                this.game.camera.follow(this.player);
                this.player.body.collideWorldBounds = true;
              }
-          else if(this.player.body.y>6220 && this.player.body.y<6820)
+          else if(this.player.body.y>3541 && this.player.body.y<5260)
              {
                this.player.kill();
-               this.player = this.game.add.sprite(1360,6660,'player1');
+               this.player = this.game.add.sprite(1360,4800,'player1');
+               this.player.body.gravity.y = 600;
+               this.game.world.setBounds(0,0,1400,9000);
+               this.game.camera.follow(this.player);
+               this.player.body.collideWorldBounds = true;
+             }
+          else if(this.player.body.y>5901 && this.player.body.y<6640)
+             {
+               this.player.kill();
+               this.player = this.game.add.sprite(1380,6000,'player1');
                this.player.body.gravity.y = 600;
                this.game.world.setBounds(0,0,1400,9000);
                this.game.camera.follow(this.player);
@@ -621,14 +647,161 @@ grass.body.immovable = true;
              }
           else
              {
+                 console.log("y: " + this.player.body.y);
+                 console.log("x: " + this.player.body.x);
+                 
           this.game.state.start("GameOver"); 
              }
         },
         
       hit: function()
         {
-            
-            this.fireball.body.acceleration.y =-600;
-        }
+            this.fireball.body.velocity.y =-725;
+            this.fireball1.body.velocity.y =-725;
+            this.fireball2.body.velocity.y =-725;
+            this.fireball3.body.velocity.y =-725;
+        },
+        
+      touchdrop: function()
+        {
+          this.game.add.tween(this.drops).to( {y: 6380 }, 1000, "Sine.easeInOut", true);
+        },
+        
+      nohelp: function()
+        {
+            if(!this.isHintOn){
+                this.yourself = this.game.add.sprite(20, 20, 'yourself');  
+                this.game.world.bringToTop(this.yourself); 
+                this.yourself.fixedToCamera = true; 
+                this.isHintOn = true;
+            } else{
+                this.yourself.kill();
+                this.isHintOn = false;
+            }
+          
+        },
+      
+      one: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(80,720, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        },
+      
+      two: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(1360,1400, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        },
+    
+      three: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(80,2400, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        },
 
+      four: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(1360,3200, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        },
+        
+       five: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(80,4000, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        },
+      
+       six: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(1360,4800, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        },
+    
+       seven: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(80,5600, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        },
+
+       eight: function()
+        {
+          this.player.kill();
+          this.player = this.game.add.sprite(1380,6000, 'player1');
+          this.player.body.gravity.y = 600;
+          this.game.world.setBounds(0,0,1400,9000);
+          this.game.camera.follow(this.player);
+          this.player.body.collideWorldBounds = true;
+        }
+      
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
