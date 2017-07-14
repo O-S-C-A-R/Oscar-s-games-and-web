@@ -12,7 +12,7 @@ var preload =
             this.game.load.image('coin','coin.png');
             this.game.load.image('lavae','lavae.png');
             this.game.load.image('sand','awesomesand.jpg');
-            this.game.load.image('gameTitle','gameTitle.png');
+            this.game.load.image('gameTitle','tech copy.jpg');
             this.game.load.image('play','play.png');
             this.game.load.image('gameOver','gameover.png');
             this.game.load.image('water','water.png');
@@ -45,6 +45,7 @@ var preload =
             this.game.load.image('sevenn','7.png');
             this.game.load.image('eightt','8.png');
             this.game.load.image('threee','three.png');
+            this.game.load.image('title','title.png');
         },
         create: function()
         {
