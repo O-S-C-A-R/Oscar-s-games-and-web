@@ -30,7 +30,7 @@ var preload =
             this.game.load.image('egypt','egypt.png');
             this.game.load.image('fireball','fireball.png');
             this.game.load.image('tomb','tomb.png');
-            this.game.load.image('ancient','ancienttemple.png');
+            this.game.load.image('ancient','ancient.png');
             this.game.load.image('ctree','ctree.png');
             this.game.load.image('drop','grey.png');
             this.game.load.image('touch','white- phaser game.png');
@@ -46,6 +46,7 @@ var preload =
             this.game.load.image('eightt','8.png');
             this.game.load.image('threee','three.png');
             this.game.load.image('title','title.png');
+            this.game.load.image('great','greatwall.png');
         },
         create: function()
         {

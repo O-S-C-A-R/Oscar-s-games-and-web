@@ -334,7 +334,7 @@ var mainState =
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',             
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',
 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ',       //5900       
-'x                                                                    ',
+'xz                                                                   ',
 'x                                                                    ',
 'x                                                                    ',
 'x                                                                    ',
@@ -396,6 +396,10 @@ this.back.add(tree);
 else if (level[i][j] == 'd') {
 var ancient = this.game.add.sprite(30+20*j, 30+20*i, 'ancient');
 this.back.add(ancient);
+}
+else if (level[i][j] == 'z') {
+var great = this.game.add.sprite(30+20*j, 30+20*i, 'great');
+this.back.add(great);
 }
 else if (level[i][j] == 'c') {
 var cave = this.game.add.sprite(30+20*j, 30+20*i, 'cave');
