@@ -9,7 +9,6 @@ var preload =
             this.game.load.image('wall','wall.png');
             this.game.load.image('wall1','wall.png');
             this.game.load.image('lava','lava.png');
-            this.game.load.image('coin','coin.png');
             this.game.load.image('lavae','lavae.png');
             this.game.load.image('sand','awesomesand.jpg');
             this.game.load.image('gameTitle','tech copy.jpg');

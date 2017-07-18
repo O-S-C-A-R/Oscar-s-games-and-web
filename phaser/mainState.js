@@ -97,7 +97,7 @@ var mainState =
 'x                                                                  ',
 'x                                 gg--                             ',
 'x                ---              g-ggg          g                 ',
-'x             ogggggg           g-------gg      gggg               ',
+'x              gggggg           g-------gg      gggg               ',
 'x             --------          -----------   ggggggg              ',
 'x                                                                  ',
 'x                                       gg                         ',
@@ -364,20 +364,110 @@ var mainState =
 'x                                                                    ',
 'x                                                                    ',             
 'x                                                                    ',  
-'xxxgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',             //6400
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-'xxxxxxxxx          xxxxxxxxxx    xxxxxxxx  xxxxxxxxxx     xxxxxxxxxxxx',              
-'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xx  xxxxxx  xxxxxxxxxx  xxx  xxxxxxxxx',
-'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xx  xxxxxx  xxxxxxxxxx  xxxxx xxxxxxxx',             
-'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxx  xxxx  xxxxxxxxxx  xxxxxx xxxxxxx',
-'xxxxxxxxx          xxxxxxxxxx  xxxx  xxxx  xxxxxxxxxx  xxxxxx xxxxxxx',              
-'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxxxx  xx  xxxxxxxxxx  xxxxxx xxxxxxx',              
-'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxxxx  xx  xxxxxxxxxx  xxxxx xxxxxxxx',
-'xxxxxxxxx  xxxxxxxxxxxxxxxxxx  xxxxxxxx    xxxxxxxxxx  xxx  xxxxxxxxx',
-'xxxxxxxxx          xxxxxxxxxx  xxxxxxxx    xxxxxxxxxx     xxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',              
-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',          //6620
+'x xgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+               
+                          
           
           ];
             for (var i = 0; i < level.length; i++) {
@@ -432,10 +522,6 @@ this.walls1.add(wall1);
 wall1.body.immovable = true; 
 }
 // Create a coin and add it to the 'coins' group
-else if (level[i][j] == 'o') {
-var coin = this.game.add.sprite(30+20*j, 30+20*i, 'coin');
-this.coins.add(coin);
-}
 
 // Create a enemy and add it to the 'enemies' group
 else if (level[i][j] == '!') {
@@ -552,7 +638,7 @@ grass.body.immovable = true;
            this.game.physics.arcade.collide(this.drops, this.player, this.restart, null, this);   
            this.physics.arcade.collide(this.walls, this.player);
            this.physics.arcade.collide(this.walls1, this.player);
-           this.physics.arcade.collide(this.coins, this.player, this.takeCoin, null, this);
+           
            this.physics.arcade.overlap(this.lavas, this.player, this.restart, null, this);
            this.physics.arcade.overlap(this.fireball, this.player, this.restart, null, this);
            this.physics.arcade.overlap(this.fireball1, this.player, this.restart, null, this);
@@ -574,6 +660,7 @@ grass.body.immovable = true;
            this.game.world.bringToTop(this.sevenn); 
            this.game.world.bringToTop(this.eightt);
            this.game.world.bringToTop(this.yourself);
+           this.game.world.bringToTop(this.drops);
 
            if(this.cursor.left.isDown)
               {
